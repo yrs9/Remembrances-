@@ -1,109 +1,74 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const AzkarApp());
+  runApp(const MyApp());
 }
 
-class AzkarApp extends StatelessWidget {
-  const AzkarApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'تطبيق الأذكار',
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF0F5132),
-          brightness: Brightness.light,
-        ),
-      ),
-      home: const HomeScreen(),
+      home: HomeScreen(),
     );
   }
 }
 
-class AzkarCategory {
-  final String title;
-  final IconData icon;
-  final List<String> items;
+class HomeScreen extends StatelessWidget {
+  HomeScreen({super.key});
 
-  AzkarCategory({
-    required this.title,
-    required this.icon,
-    required this.items,
-  });
-}
-
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  final List<AzkarCategory> categories = [
-    AzkarCategory(
-      title: 'أذكار الاستيقاظ من النوم',
-      icon: Icons.wb_sunny_outlined,
-      items: [
+  final List<Map<String, dynamic>> azkarList = [
+    {
+      'title': 'أذكار الاستيقاظ من النوم',
+      'items': [
         'الحمد لله الذي أحيانا بعدما أماتنا وإليه النشور.',
-        'لا إله إلا الله وحده لا شريك له، له الملك وله الحمد، وهو على كل شيء قدير.',
-      ],
-    ),
-    AzkarCategory(
-      title: 'أذكار الصباح',
-      icon: Icons.wb_twilight,
-      items: [
-        'آية الكرسي: الله لا إله إلا هو الحي القيوم لا تأخذه سنة ولا نوم.',
-        'قراءة سورة الإخلاص، الفلق، والناس (3 مرات).',
-        'أصبحنا وأصبح الملك لله، والحمد لله، لا إله إلا الله وحده لا شريك له.',
-      ],
-    ),
-    AzkarCategory(
-      title: 'أذكار المساء',
-      icon: Icons.nights_stay_outlined,
-      items: [
+        'لا إله إلا الله وحده لا شريك له، له الملك وله الحمد.',
+      ]
+    },
+    {
+      'title': 'أذكار الصباح',
+      'items': [
         'آية الكرسي: الله لا إله إلا هو الحي القيوم.',
-        'قراءة سورة الإخلاص، الفلق، والناس (3 مرات).',
-        'أمسينا وأمسى الملك لله، والحمد لله، لا إله إلا الله وحده لا شريك له.',
-      ],
-    ),
-    AzkarCategory(
-      title: 'أذكار بعد الصلاة',
-      icon: Icons.mosque_outlined,
-      items: [
-        'أستغفر الله (3 مرات)، اللهم أنت السلام ومنك السلام، تباركت يا ذا الجلال والإكرام.',
-        'لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير.',
-      ],
-    ),
-    AzkarCategory(
-      title: 'أذكار بعد التشهد',
-      icon: Icons.menu_book_outlined,
-      items: [
-        'اللهم إني أعوذ بك من عذاب جهنم، ومن عذاب القبر، ومن فتنة المحيا والممات.',
-        'اللهم إني ظلمت نفسي ظلما كثيرا، ولا يغفر الذنوب إلا أنت، فاغفر لي وارحمني.',
-      ],
-    ),
-    AzkarCategory(
-      title: 'قائمة التسبيح',
-      icon: Icons.touch_app_outlined,
-      items: [
-        'سبحان الله وبحمده، سبحان الله العظيم.',
-        'أستغفر الله العظيم وأتوب إليه.',
-        'لا حول ولا قوة إلا بالله العلي العظيم.',
-      ],
-    ),
-    AzkarCategory(
-      title: 'دعاء استفتاح الصلاة',
-      icon: Icons.front_hand_outlined,
-      items: [
+        'رضيت بالله رباً وبالإسلام ديناً وبمحمد نبياً.',
+      ]
+    },
+    {
+      'title': 'أذكار المساء',
+      'items': [
+        'أمسينا وأمسى الملك لله والحمد لله.',
+        'اللهم بك أمسينا وبك أصبحنا وبك نحيا وبك نموت.',
+      ]
+    },
+    {
+      'title': 'أذكار بعد الصلاة',
+      'items': [
+        'استغفر الله ثلاثاً، اللهم أنت السلام ومنك السلام.',
+        'لا إله إلا الله وحده لا شريك له.',
+      ]
+    },
+    {
+      'title': 'أذكار بعد التشهد',
+      'items': [
+        'اللهم إني أعوذ بك من عذاب جهنم ومن عذاب القبر.',
+        'اللهم إني ظلمت نفسي ظلماً كثيراً.',
+      ]
+    },
+    {
+      'title': 'قائمة التسبيح',
+      'items': [
+        'سبحان الله وبحمده سبحان الله العظيم.',
+        'استغفر الله العظيم واتوب إليه.',
+      ]
+    },
+    {
+      'title': 'دعاء استفتاح الصلاة',
+      'items': [
         'اللهم باعد بيني وبين خطاياي كما باعدت بين المشرق والمغرب.',
-        'سبحانك اللهم وبحمدك، وتبارك اسمك، وتعالى جدك، ولا إله غيرك.',
-      ],
-    ),
+        'سبحانك اللهم وبحمدك وتبارك اسمك وتعالى جدك.',
+      ]
+    },
   ];
 
   @override
@@ -112,28 +77,71 @@ class _HomeScreenState extends State<HomeScreen> {
       textDirection: TextDirection.rtl,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text(
-            'حصن المسلم - الأذكار',
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
+          title: const Text('تطبيق الأذكار'),
           centerTitle: true,
-          backgroundColor: Theme.of(context).colorScheme.primaryContainer,
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: ListView.builder(
-            itemCount: categories.length,
-            itemBuilder: (context, index) {
-              final category = categories[index];
-              return Card(
-                elevation: 2,
-                margin: const EdgeInsets.symmetric(vertical: 8),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
+        body: ListView.builder(
+          itemCount: azkarList.length,
+          itemBuilder: (context, index) {
+            return Card(
+              margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              child: ListTile(
+                title: Text(
+                  azkarList[index]['title'],
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                 ),
-                child: ListTile(
-                  contentPadding: const EdgeInsets.all(16),
-                  leading: CircleAvatar(
-                    radius: 26,
-                    backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(0.1),
-                    child: Icon
+                trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DetailsScreen(
+                        title: azkarList[index]['title'],
+                        items: azkarList[index]['items'],
+                      ),
+                    ),
+                  );
+                },
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class DetailsScreen extends StatelessWidget {
+  final String title;
+  final List<String> items;
+
+  const DetailsScreen({super.key, required this.title, required this.items});
+
+  @override
+  Widget build(BuildContext context) {
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(title),
+        ),
+        body: ListView.builder(
+          padding: const EdgeInsets.all(12),
+          itemCount: items.length,
+          itemBuilder: (context, index) {
+            return Card(
+              margin: const EdgeInsets.only(bottom: 10),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  items[index],
+                  style: const TextStyle(fontSize: 18, height: 1.5),
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
