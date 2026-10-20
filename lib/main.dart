@@ -57,20 +57,18 @@ class _HomeScreenState extends State<HomeScreen> {
       title: 'أذكار الصباح',
       icon: Icons.wb_twilight,
       items: [
-        'آية الكرسي: الله لا إله إلا هو الحي القيوم لا تأخذه سنة ولا نوم...',
+        'آية الكرسي: الله لا إله إلا هو الحي القيوم لا تأخذه سنة ولا نوم.',
         'قراءة سورة الإخلاص، الفلق، والناس (3 مرات).',
         'أصبحنا وأصبح الملك لله، والحمد لله، لا إله إلا الله وحده لا شريك له.',
-        'اللهم بك أصبحنا، وبك أمسينا، وبك نحيا، وبك نموت وإليك النشور.',
       ],
     ),
     AzkarCategory(
       title: 'أذكار المساء',
       icon: Icons.nights_stay_outlined,
       items: [
-        'آية الكرسي: الله لا إله إلا هو الحي القيوم...',
+        'آية الكرسي: الله لا إله إلا هو الحي القيوم.',
         'قراءة سورة الإخلاص، الفلق، والناس (3 مرات).',
         'أمسينا وأمسى الملك لله، والحمد لله، لا إله إلا الله وحده لا شريك له.',
-        'اللهم بك أمسينا، وبك أصبحنا، وبك نحيا، وبك نموت وإليك المصير.',
       ],
     ),
     AzkarCategory(
@@ -79,7 +77,6 @@ class _HomeScreenState extends State<HomeScreen> {
       items: [
         'أستغفر الله (3 مرات)، اللهم أنت السلام ومنك السلام، تباركت يا ذا الجلال والإكرام.',
         'لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير.',
-        'سبحان الله (33)، الحمد لله (33)، الله أكبر (33).',
       ],
     ),
     AzkarCategory(
@@ -97,9 +94,46 @@ class _HomeScreenState extends State<HomeScreen> {
         'سبحان الله وبحمده، سبحان الله العظيم.',
         'أستغفر الله العظيم وأتوب إليه.',
         'لا حول ولا قوة إلا بالله العلي العظيم.',
-        'اللهم صل وسلم وبارك على نبينا محمد.',
       ],
     ),
     AzkarCategory(
       title: 'دعاء استفتاح الصلاة',
-      icon: Icons.front_hand_outlined
+      icon: Icons.front_hand_outlined,
+      items: [
+        'اللهم باعد بيني وبين خطاياي كما باعدت بين المشرق والمغرب.',
+        'سبحانك اللهم وبحمدك، وتبارك اسمك، وتعالى جدك، ولا إله غيرك.',
+      ],
+    ),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            'حصن المسلم - الأذكار',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          centerTitle: true,
+          backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: ListView.builder(
+            itemCount: categories.length,
+            itemBuilder: (context, index) {
+              final category = categories[index];
+              return Card(
+                elevation: 2,
+                margin: const EdgeInsets.symmetric(vertical: 8),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: ListTile(
+                  contentPadding: const EdgeInsets.all(16),
+                  leading: CircleAvatar(
+                    radius: 26,
+                    backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                    child: Icon
